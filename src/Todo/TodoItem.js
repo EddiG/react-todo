@@ -7,7 +7,14 @@ class TodoItem extends React.Component {
 
   render() {
     return (
-      <li>
+      <li
+        style={{
+          textDecoration:
+          this.props.complete ?
+          'line-through' :
+          'none',
+        }}
+      >
         <input
           type="checkbox"
           checked={this.props.complete}

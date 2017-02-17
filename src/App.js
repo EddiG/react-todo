@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Todo from './Todo/Todo';
+import Todo from './Todo/TodoContainer';
 
 const App = () =>
   <div className="App">

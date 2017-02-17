@@ -15,7 +15,7 @@ class TodoForm extends React.Component {
       </form>
     );
   }
-};
+}
 
 TodoForm.propTypes = {
   onCreateTask: React.PropTypes.func.isRequired,

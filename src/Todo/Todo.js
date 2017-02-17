@@ -1,7 +1,7 @@
 import React from 'react';
 import TodoList from './TodoList';
 import TodoForm from './TodoForm';
-import {addTask} from './TodoHelper'
+import { addTask, toggleComplete } from './TodoHelper';
 
 class Todo extends React.Component {
   constructor() {
@@ -15,15 +15,19 @@ class Todo extends React.Component {
   }
 
   onCreateTask = (title) => {
-    const task = { title: title, complete: false }
-    this.setState({ tasks: addTask(task, this.state.tasks) })
+    const task = { title, complete: false };
+    this.setState({ tasks: addTask(task, this.state.tasks) });
+  }
+
+  onToggleActive = (title) => {
+    this.setState({ tasks: toggleComplete(title, this.state.tasks) });
   }
 
   render() {
     return (
       <div>
         <TodoForm onCreateTask={this.onCreateTask} />
-        <TodoList {...this.state} />
+        <TodoList {...this.state} onToggleActive={this.onToggleActive} />
       </div>
     );
   }

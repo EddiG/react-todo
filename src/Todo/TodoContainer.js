@@ -15,12 +15,12 @@ class Todo extends React.Component {
   }
 
   onCreateTask = (title) => {
-    const task = { title, complete: false };
-    this.setState({ tasks: addTask(task, this.state.tasks) });
+    const newTask = { title, complete: false };
+    this.setState({ ...this.state, tasks: addTask(newTask, this.state.tasks) });
   }
 
   onToggleActive = (title) => {
-    this.setState({ tasks: toggleComplete(title, this.state.tasks) });
+    this.setState({ ...this.state, tasks: toggleComplete(title, this.state.tasks) });
   }
 
   render() {

@@ -14,7 +14,7 @@ class Todo extends React.Component {
     };
   }
 
-  onCreateTask = (title) => {
+  onCreate = (title) => {
     const newTask = { title, complete: false };
     this.setState({ ...this.state, tasks: addTask(newTask, this.state.tasks) });
   }
@@ -26,7 +26,7 @@ class Todo extends React.Component {
   render() {
     return (
       <div>
-        <TodoForm onCreateTask={this.onCreateTask} />
+        <TodoForm onCreate={this.onCreate} />
         <TodoList {...this.state} onToggleActive={this.onToggleActive} />
       </div>
     );

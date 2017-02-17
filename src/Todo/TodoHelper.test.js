@@ -1,3 +1,4 @@
+import deepFreeze from 'deep-freeze';
 import { addTask, toggleComplete } from './TodoHelper';
 
 describe('addTask', () => {
@@ -5,16 +6,9 @@ describe('addTask', () => {
     const tasks = [{ title: 'first', complete: false }];
     const newTask = { title: 'second', complete: false };
     const expected = [{ title: 'first', complete: false }, { title: 'second', complete: false }];
+    deepFreeze(tasks);
     const result = addTask(newTask, tasks);
     expect(result).toEqual(expected);
-  });
-
-  it('addTask should not mutate the original tasks list', () => {
-    const tasks = [{ title: 'first', complete: false }];
-    const newTask = { title: 'second', complete: false };
-    const expected = [{ title: 'first', complete: false }];
-    addTask(newTask, tasks);
-    expect(tasks).toEqual(expected);
   });
 });
 
@@ -22,18 +16,13 @@ describe('toggleComplete', () => {
   it('toggleComplete must invert complete status of the task', () => {
     const tasks = [{ title: 'first', complete: false }];
     const expected = [{ title: 'first', complete: true }];
+    deepFreeze(tasks);
     const result = toggleComplete('first', tasks);
     expect(result).toEqual(expected);
 
     const expected2 = [{ title: 'first', complete: false }];
+    deepFreeze(result);
     const result2 = toggleComplete('first', result);
     expect(result2).toEqual(expected2);
-  });
-
-  it('toggleComplete should not mutate the original tasks list', () => {
-    const tasks = [{ title: 'first', complete: false }];
-    const expected = [{ title: 'first', complete: false }];
-    toggleComplete('first', tasks);
-    expect(tasks).toEqual(expected);
   });
 });

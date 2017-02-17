@@ -7,7 +7,7 @@ const TodoList = ({ tasks, onToggleActive }) =>
       <TodoItem
         key={task.title}
         {...task}
-        onToggleActive={onToggleActive}
+        onToggleActive={() => onToggleActive(task.title)}
       />)
     }
   </ul>;

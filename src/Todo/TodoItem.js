@@ -12,7 +12,7 @@ const TodoItem = ({ title, complete, onToggleActive }) =>
     <input
       type="checkbox"
       checked={complete}
-      onChange={() => onToggleActive(title)}
+      onChange={onToggleActive}
     />
     {title}
   </li>;

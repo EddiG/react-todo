@@ -23,8 +23,21 @@ TodoList.propTypes = {
   onToggle: React.PropTypes.func.isRequired,
 };
 
+const getVisibleTodos = (todos, filter) => {
+  switch (filter) {
+    case 'ALL_VISIBLE':
+      return todos;
+    case 'ACTIVE_VISIBLE':
+      return todos.filter(todo => !todo.complete);
+    case 'COMPLETE_VISIBLE':
+      return todos.filter(todo => todo.complete);
+    default:
+      return todos;
+  }
+};
+
 const mapStateToProps = state => ({
-  todos: state.todos,
+  todos: getVisibleTodos(state.todos, state.filter),
 });
 
 const mapDispatchToProps = dispatch => ({

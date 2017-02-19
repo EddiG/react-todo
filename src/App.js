@@ -1,7 +1,12 @@
 import React from 'react';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import todoApp from './reducers/';
 import logo from './logo.svg';
+import Todo from './components/Todo';
 import './App.css';
-import Todo from './Todo/TodoContainer';
+
+const store = createStore(todoApp);
 
 const App = () =>
   <div className="App">
@@ -12,4 +17,9 @@ const App = () =>
     <Todo />
   </div>;
 
-export default App;
+const ReduxApp = () =>
+  <Provider store={store}>
+    <App />
+  </Provider>;
+
+export default ReduxApp;

@@ -1,12 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { addTodo } from '../actions';
 
-const TodoForm = ({ onCreate }) => {
+const TodoForm = ({ dispatch }) => {
   let title;
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        onCreate(title.value);
+        dispatch(addTodo(title.value));
         title.value = '';
       }}
     >
@@ -17,7 +19,7 @@ const TodoForm = ({ onCreate }) => {
 };
 
 TodoForm.propTypes = {
-  onCreate: React.PropTypes.func.isRequired,
+  dispatch: React.PropTypes.func.isRequired,
 };
 
-export default TodoForm;
+export default connect()(TodoForm);

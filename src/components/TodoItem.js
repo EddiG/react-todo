@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TodoItem = ({ title, complete, onToggleActive }) =>
+const TodoItem = ({ title, complete, onToggle }) =>
   <li
     style={{
       textDecoration:
@@ -12,7 +12,7 @@ const TodoItem = ({ title, complete, onToggleActive }) =>
     <input
       type="checkbox"
       checked={complete}
-      onChange={onToggleActive}
+      onChange={onToggle}
     />
     {title}
   </li>;
@@ -20,7 +20,7 @@ const TodoItem = ({ title, complete, onToggleActive }) =>
 TodoItem.propTypes = {
   title: React.PropTypes.string.isRequired,
   complete: React.PropTypes.bool.isRequired,
-  onToggleActive: React.PropTypes.func.isRequired,
+  onToggle: React.PropTypes.func.isRequired,
 };
 
 export default TodoItem;

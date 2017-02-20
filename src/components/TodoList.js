@@ -26,7 +26,7 @@ const TodoList = ({ todos, onToggle }) =>
 
 TodoList.propTypes = {
   todos: React.PropTypes.arrayOf(React.PropTypes.shape({
-    id: React.PropTypes.number,
+    id: React.PropTypes.string,
     title: React.PropTypes.string,
     complete: React.PropTypes.bool,
   })).isRequired,

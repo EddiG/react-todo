@@ -1,15 +1,9 @@
-const getNextTodoId = (todos) => {
-  if (todos.length) {
-    return Math.max(...todos.map(todo => todo.id)) + 1;
-  }
-
-  return 1;
-};
+import { v4 } from 'node-uuid';
 
 const addTodo = (state, action) => [
   ...state,
   {
-    id: getNextTodoId(state),
+    id: v4(),
     title: action.title,
     complete: action.complete,
   },

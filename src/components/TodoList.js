@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {List, ListItem} from 'material-ui/List';
+import { List, ListItem } from 'material-ui/List';
 import { toggleTodo } from '../actions';
 
 const TodoList = ({ todos, onToggle }) =>

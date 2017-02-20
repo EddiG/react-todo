@@ -17,6 +17,7 @@ const TodoForm = ({ dispatch }) => {
       <TextField
         hintText="New todo"
         ref={(comp) => { title = comp; }}
+        fullWidth
       />
     </form>
   );

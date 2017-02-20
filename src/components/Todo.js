@@ -4,7 +4,12 @@ import TodoForm from './TodoForm';
 import Filters from './Filters';
 
 const Todo = () =>
-  <div>
+  <div
+    style={{
+      width: '290px',
+      margin: '0 auto',
+    }}
+  >
     <TodoForm />
     <TodoList />
     <Filters />

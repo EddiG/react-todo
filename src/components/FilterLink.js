@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
+import FlatButton from 'material-ui/FlatButton';
 import { setFilter } from '../actions';
-import Link from './Link';
 
 const mapStateToProps = (state, ownProps) => ({
-  active: ownProps.filter !== state.filter,
+  disabled: ownProps.filter === state.filter,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
@@ -15,4 +15,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Link);
+)(FlatButton);

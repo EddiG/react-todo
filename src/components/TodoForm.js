@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import TextField from 'material-ui/TextField';
 import { addTodo } from '../actions';
 
 const TodoForm = ({ dispatch }) => {
@@ -8,12 +9,15 @@ const TodoForm = ({ dispatch }) => {
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        dispatch(addTodo(title.value));
-        title.value = '';
+        dispatch(addTodo(title.getValue()));
+        title.input.value = '';
+        title.setState({ hasValue: false });
       }}
     >
-      <input type="text" ref={(node) => { title = node; }} />
-      <input type="submit" value="Add" />
+      <TextField
+        hintText="New todo"
+        ref={(comp) => { title = comp; }}
+      />
     </form>
   );
 };

@@ -1,19 +1,25 @@
 import React from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 import todoApp from './reducers/';
 import Todo from './components/Todo';
 
 const store = createStore(todoApp);
 
-const App = () =>
-  <div>
+// Needed for onTouchTap for MUI library
+// http://stackoverflow.com/a/34015469/988941
+injectTapEventPlugin();
+
+const MuiThemedApp = () =>
+  <MuiThemeProvider>
     <Todo />
-  </div>;
+  </MuiThemeProvider>;
 
 const ReduxApp = () =>
   <Provider store={store}>
-    <App />
+    <MuiThemedApp />
   </Provider>;
 
 export default ReduxApp;

@@ -3,9 +3,9 @@ import FilterLink from './FilterLink';
 
 const FilterList = () =>
   <div>
-    <FilterLink filter={'ALL_VISIBLE'}>All</FilterLink>
-    <FilterLink filter={'ACTIVE_VISIBLE'}>Active</FilterLink>
-    <FilterLink filter={'COMPLETE_VISIBLE'}>Complete</FilterLink>
+    <FilterLink filter={'all'} label={'All'} />
+    <FilterLink filter={'active'} label={'Active'} />
+    <FilterLink filter={'complete'} label={'Complete'} />
   </div>;
 
 export default FilterList;

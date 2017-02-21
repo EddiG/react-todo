@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import { List, ListItem } from 'material-ui/List';
 import { toggleTodo } from '../actions';
 
@@ -35,19 +36,19 @@ TodoList.propTypes = {
 
 const getVisibleTodos = (todos, filter) => {
   switch (filter) {
-    case 'ALL_VISIBLE':
+    case 'all':
       return todos;
-    case 'ACTIVE_VISIBLE':
+    case 'active':
       return todos.filter(todo => !todo.complete);
-    case 'COMPLETE_VISIBLE':
+    case 'complete':
       return todos.filter(todo => todo.complete);
     default:
       return todos;
   }
 };
 
-const mapStateToProps = state => ({
-  todos: getVisibleTodos(state.todos, state.filter),
+const mapStateToProps = (state, { params }) => ({
+  todos: getVisibleTodos(state.todos, params.filter || 'all'),
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -56,7 +57,7 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps,
-)(TodoList);
+)(TodoList));

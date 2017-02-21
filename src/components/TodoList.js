@@ -3,15 +3,16 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { List } from 'material-ui/List';
 import TodoItem from './TodoItem';
-import { toggleTodo } from '../actions';
+import { toggleTodo, deleteTodo } from '../actions';
 
-const TodoList = ({ todos, onToggle }) =>
+const TodoList = ({ todos, onToggle, onDelete }) =>
   <List>
     {todos.map(todo =>
       <TodoItem
         {...todo}
         key={todo.id}
         onClick={() => onToggle(todo.id)}
+        onDelete={() => onDelete(todo.id)}
       />)
     }
   </List>;
@@ -23,6 +24,7 @@ TodoList.propTypes = {
     complete: React.PropTypes.bool,
   })).isRequired,
   onToggle: React.PropTypes.func.isRequired,
+  onDelete: React.PropTypes.func.isRequired,
 };
 
 const getVisibleTodos = (todos, filter) => {
@@ -45,6 +47,9 @@ const mapStateToProps = (state, { params }) => ({
 const mapDispatchToProps = dispatch => ({
   onToggle: (id) => {
     dispatch(toggleTodo(id));
+  },
+  onDelete: (id) => {
+    dispatch(deleteTodo(id));
   },
 });
 

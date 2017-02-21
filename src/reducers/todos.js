@@ -21,12 +21,22 @@ const toggleTodo = (state, action) =>
     };
   });
 
+const deleteTodo = (state, action) =>
+  state.reduce((acc, todo) => {
+    if (todo.id !== action.id) {
+      return [...acc, todo];
+    }
+    return acc;
+  }, []);
+
 const todos = (state = [], action) => {
   switch (action.type) {
     case 'ADD_TODO':
       return addTodo(state, action);
     case 'TOGGLE_TODO':
       return toggleTodo(state, action);
+    case 'DELETE_TODO':
+      return deleteTodo(state, action);
     default:
       return state;
   }

@@ -9,7 +9,7 @@ export const toggleTodo = id => ({
   id,
 });
 
-export const setFilter = filter => ({
-  type: 'SET_FILTER',
-  filter,
+export const deleteTodo = id => ({
+  type: 'DELETE_TODO',
+  id,
 });

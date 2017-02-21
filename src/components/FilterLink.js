@@ -1,20 +1,13 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import FlatLinkButton from './FlatLinkButton';
-import { setFilter } from '../actions';
 
 const mapStateToProps = (state, ownProps) => ({
-  disabled: ownProps.filter === state.filter,
+  disabled: ownProps.filter === ownProps.params.filter,
   link: ownProps.filter,
   label: ownProps.label,
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  onClick: () => {
-    dispatch(setFilter(ownProps.filter));
-  },
-});
-
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
-  mapDispatchToProps,
-)(FlatLinkButton);
+)(FlatLinkButton));

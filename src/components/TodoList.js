@@ -1,26 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { List, ListItem } from 'material-ui/List';
+import { List } from 'material-ui/List';
+import TodoItem from './TodoItem';
 import { toggleTodo } from '../actions';
 
 const TodoList = ({ todos, onToggle }) =>
   <List>
     {todos.map(todo =>
-      <ListItem
+      <TodoItem
+        {...todo}
         key={todo.id}
-        primaryText={todo.title}
         onClick={() => onToggle(todo.id)}
-        style={{
-          textDecoration:
-          todo.complete ?
-          'line-through' :
-          'none',
-          color:
-          todo.complete ?
-          'gray' :
-          'inherit',
-        }}
       />)
     }
   </List>;
